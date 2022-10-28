@@ -3,30 +3,66 @@ let num1="";
 let num2="";
 let operator="";
 let isNum1Full=false;
+let alreadyFloat=false;
+let pointFloat=".";
 const display=document.getElementsByClassName("displaymon");
 const buttonEq=document.getElementById("butUg");
 buttonEq.addEventListener("click", eqPressed);
+const clearB=document.getElementById("butClear");
+clearB.addEventListener("click", clear);
+const floatButton=document.getElementById("butFloat");
+floatButton.addEventListener("click", addFloat);
+
+
+
+
+function addFloat(){
+    if (alreadyFloat==false){
+        saveNum(pointFloat);
+        alreadyFloat=true;
+    }
+    /*if ((isNum1Full==false) && (alreadyFloat==false)){
+        saveNum(point);
+        alreadyFloat=true;
+    } else if ((isNum1Full==true) && (alreadyFloat==false)){
+
+    }*/
+}
+
+function clear(){
+    num1="";
+    num2="";
+    operator="";
+    alreadyFloat=false;
+    isNum1Full=false;
+    document.getElementById("disp").innerText="0";
+}
 
 function eqPressed(){
     let res;
+    alreadyFloat=false;
     switch(operator){
         case "+":
             res=add(num1,num2);
+            res=Math.round(res*1000)/1000;
             document.getElementById("disp").innerText=res;
             manageResult(res);
             break;
         case "-":
             res=substract(num1,num2);
+            res=Math.round(res*1000)/1000;
             document.getElementById("disp").innerText=res;
             manageResult(res);
             break;
         case "*":
             res=multiply(num1,num2);
+            res=Math.round(res*1000)/1000;
             document.getElementById("disp").innerText=res;
             manageResult(res);
             break;
         case "/":
             res=divide(num1,num2);
+            res=Math.round(res*1000)/1000;
             document.getElementById("disp").innerText=res;
             manageResult(res);
             break;
@@ -40,19 +76,6 @@ function manageResult(result){
     num2="";
     operator="";
 }
-
-
-/*const Button1=document.querySelector("#but1");
-const Button2=document.querySelector("#but2");
-const Button3=document.querySelector("#but3");
-const Button4=document.querySelector("#but4");
-const Button5=document.querySelector("#but5");
-const Button6=document.querySelector("#but6");
-const Button7=document.querySelector("#but7");
-const Button8=document.querySelector("#but8");
-const Button9=document.querySelector("#but9");
-const Button0=document.querySelector("#but0");
-*/
 
 
 const opBut= document.getElementsByClassName("butOp");
@@ -71,10 +94,12 @@ function opPressed(){
     if(operator==""){
         saveSign(this.innerHTML);
         isNum1Full=true;
+        alreadyFloat=false;
     } else {
         eqPressed();
         saveSign(this.innerHTML);
         isNum1Full=true;
+        alreadyFloat=false;
     }
     
 }

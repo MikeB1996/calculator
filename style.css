@@ -11,13 +11,13 @@ body{
 
 button{
     margin: 2px;
-    width: 35px;
-    height: 35px;
+    width: 55px;
+    height: 48px;
 }
 
 .numbers {
     display: flexbox;
-    width: 130px;
+    width: 200px;
     justify-content: center;
     align-items: center;
     margin: 10px;
@@ -34,17 +34,18 @@ button{
 }
 
 .displaymon{
-    height: 50px;
-    width: 150px;
+    height: 60px;
+    width: 250px;
     background-color: white;
     margin: 1px 15px;
-    text-align: right;
-    font-size: 20px;
+    text-align: end;
+    padding-top: 15px;
+    font-size: 35px;
 
 }
 
 .Cbutton{
-    width: 50px;
+    width: 90px;
 }
 
 .clearZone{
@@ -56,8 +57,9 @@ button{
 .calculator {
     display: flexbox;
     background-color: grey;
-    width: 200px;
-    height: 280px;
+    width: 300px;
+    height: 380px;
     flex-direction: column;
+    margin-top: 50px;
     
 }
